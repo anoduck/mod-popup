@@ -21,6 +21,7 @@
 {{- $btnlabel := "" -}}
 {{- $btnlink := "" -}}
 {{- $content := "" -}}
+{{- $context := "" -}}
 {{- $debug := "" -}}
 
 <!-- Set debug -->
@@ -28,17 +29,19 @@
     {{- $debug = true -}}
 {{ end }}
 
+{{- $context = .Inner -}}
+
 <!-- Define Variables -->
 {{- if .IsNamedParams }}
   {{- $title = .Get "title" -}}
   {{- $btnlabel = .Get "btnlabel" -}}
   {{- $btnlink = .Get "btnlink" -}}
-  {{- $content = trim .Inner " \r\n" -}}
+  {{- $content = $context | strings.TrimSpace | .Page.RenderString -}}
 {{ else }}
   {{- $title = .Get 0 -}}
   {{- $btnlabel = .Get 1 -}}
   {{- $btnlink = .Get 2 -}}
-  {{- $content = trim .Inner " \r\n" -}}
+  {{- $content = $context | strings.TrimSpace | .Page.RenderString -}}
 {{ end }}
 
 
@@ -49,10 +52,36 @@
     <h3>{{ . | safeHTML }}</h3>
     {{ end }}
     {{ with $content }}
-      {{ . | .Page.RenderString }}
+      {{ . }}
     {{ end }}
     <a href="{{ $btnlink | safeHTML }}" class="button">{{ $btnlabel | safeHTML }}</a>
   </div>
+</div>
+
+
+<!-- popup -->
+<div class="popScroll">
+	<div class="popup">
+		<span class="ribbon top-left ribbon-primary">
+			<small>Hello!</small>
+		</span>
+    {{ with $title }}
+      <h1>{{ . | safeHTML }}</h1>
+    {{ end }}
+		<h1>Join Funda Clear Now</h1>
+		<div class='video-wrapper'>
+			<div class='video'>
+				<img src="https://loremflickr.com/290/200/cat/all" alt="" width="290" height="200" />
+			</div>
+		</div>
+		<p>Close the Pop up or You can Go Home Now.</p>
+		<div id="option">
+			<a href="#" id="home" class="boxi">Home</a>
+			<em>or</em>
+			<a href="#" id="close" class="boxi closei">Close</a>
+<!-- 			<p class="adstext">&nbsp</p> -->
+		</div>
+	</div>
 </div>
 
 <!-- Provide debug information -->
@@ -65,10 +94,10 @@
     Rendering info
     --------------
 
-    - Original Content Entry = {{ $content }}
-    - Content Entry with Safe Html = {{ $content | safeHTML }}
-    - Rendered content with Page.RenderString = {{ $content | .Page.RenderString }}
-    - Rendered content with markdownify = {{ $content | .Page.Markdownify }}
+    - Original Content Entry = {{ $context }}
+    - Content Entry with Safe Html = {{ $context | safeHTML }}
+    - Rendered content with Page.RenderString = {{ $context | strings.TrimSpace | .Page.RenderString }}
+    - Rendered content with markdownify = {{ $context | strings.TrimSpace | .Page.Markdownify }}
   
   </pre>
 </div>
