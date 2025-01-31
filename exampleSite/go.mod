@@ -1,5 +1,5 @@
-module github.com/gethinode/mod-template/exampleSite
+module github.com/anoduck/mod-popup/exampleSite
 
 go 1.19
 
-require github.com/gethinode/mod-template v0.0.0-20240912031743-7fd02bc201de // indirect
+require github.com/anoduck/mod-popup v0.0.0-20240912031743-7fd02bc201de // indirect

@@ -1,0 +1,75 @@
+<!--
+    divcensed under MIT license 2025, Anoduck, The Anonymous Duck
+    https://anoduck.mit-license.org
+
+    Hinode is a creation of The Hinode Team / I.E. Mark Dumay -> Of, which all credit and property rights are due.
+
+    TimelineJS is created by The Knight Labs at The NorthWestern University School of Engineering, for which, all credit and property rights are due.
+-->
+<!--
+    Copyright � 2024 The Hinode Team / Mark Dumay. All rights reserved.
+    Use of this source code is governed by The MIT license (MIT) that can be found in the LICENSE file.
+    Visit gethinode.com/license for more details.
+-->
+
+<!-- Check for valid arguments -->
+{{- $error := false -}}
+
+<!-- Initialize arguments -->
+{{- $file := . -}}
+{{- $title := "" -}}
+{{- $btnlabel := "" -}}
+{{- $btnlink := "" -}}
+{{- $content := "" -}}
+{{- $debug := "" -}}
+
+<!-- Set debug -->
+{{- if .Site.Params.modules.countup.debug }}
+    {{- $debug = true -}}
+{{ end }}
+
+<!-- Define Variables -->
+{{- if .IsNamedParams }}
+  {{- $title = .Get "title" -}}
+  {{- $btnlabel = .Get "btnlabel" -}}
+  {{- $btnlink = .Get "btnlink" -}}
+  {{- $content = trim .Inner " \r\n" -}}
+{{ else }}
+  {{- $title = .Get 0 -}}
+  {{- $btnlabel = .Get 1 -}}
+  {{- $btnlink = .Get 2 -}}
+  {{- $content = trim .Inner " \r\n" -}}
+{{ end }}
+
+
+<div class="row pop-up">
+  <div class="box small-6 large-centered">
+    <a href="#" class="close-button">&#10006;</a>
+    {{ with $title }}
+    <h3>{{ . | safeHTML }}</h3>
+    {{ end }}
+    {{ with $content }}
+      {{ . | .Page.RenderString }}
+    {{ end }}
+    <a href="{{ $btnlink | safeHTML }}" class="button">{{ $btnlabel | safeHTML }}</a>
+  </div>
+</div>
+
+<!-- Provide debug information -->
+{{- if $debug }}
+<div>
+  <pre>
+  Debugging Info:
+  ===============
+
+    Rendering info
+    --------------
+
+    - Original Content Entry = {{ $content }}
+    - Content Entry with Safe Html = {{ $content | safeHTML }}
+    - Rendered content with Page.RenderString = {{ $content | .Page.RenderString }}
+    - Rendered content with markdownify = {{ $content | .Page.Markdownify }}
+  
+  </pre>
+</div>
+{{ end }}

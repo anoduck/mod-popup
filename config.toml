@@ -12,3 +12,10 @@
   [[module.mounts]]
     source = 'static'
     target = 'static'
+  [[module.mounts]]
+    source = 'data'
+    target = 'data'
+
+[params.modules.underconstruction]
+  integration = "critical"
+  debug = true

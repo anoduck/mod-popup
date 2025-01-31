@@ -1,7 +1,7 @@
 {
-  "name": "@gethinode/mod-template",
-  "version": "0.0.0",
-  "description": "A template to define a Hugo module compatible with Hinode",
+  "name": "@anoduck/mod-popup",
+  "version": "0.0.1",
+  "description": "A Hugo module compatible with Hinode for adding a popup to the front page.",
   "keywords": [
     "hugo",
     "module"
@@ -21,14 +21,14 @@
     "mod:update": "rimraf _vendor && hugo mod get -u ./... && hugo mod get -u && npm run -s mod:vendor && npm run -s mod:tidy",
     "mod:tidy": "hugo mod tidy",
     "mod:vendor": "rimraf _vendor && hugo mod vendor",
-    "postinstall": "echo TODO: add postinstall instructions",
+    "postinstall": "echo MOD requires no postinstall steps.",
     "test": "npm run -s build",
     "upgrade": "npx npm-check-updates -u && npm run -s mod:update",
     "prepare": "node .husky/install.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gethinode/mod-template.git"
+    "url": "git+https://github.com/anoduck/mod-popup.git"
   },
   "author": "Mark Dumay",
   "license": "MIT",
@@ -39,6 +39,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
+    "@gethinode/hinode": "^0.27.29",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "commitizen": "^4.3.1",
