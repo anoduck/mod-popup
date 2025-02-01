@@ -18,5 +18,5 @@
     target = 'static'
 
 [params.modules.popup]
-  integration = "critical"
+  integration = "optional"
   debug = false

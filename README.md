@@ -42,6 +42,8 @@ This module uses [semantic-release][semantic-release] to automate the release of
 
 Usage is fairly straight forward, the shortcode operates in the same manner in which Hinode's button shortcode operates, except it has severly less availability for customization. The target of this module was simplicity and functionality.
 
+You will need to add this module to the `_index.md` file of your site, this ensures the popup will only appear on your front page, and not on everypage as it was originally and erroneously written.
+
 | Param    | Type               | Description                                           |
 |----------|--------------------|-------------------------------------------------------|
 | title    | string             | Title affixed to the top of the popup.                |
