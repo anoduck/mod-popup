@@ -38,12 +38,30 @@ Hinode is a clean blog theme for [Hugo][hugo], an open-source static site genera
 
 This module uses [semantic-release][semantic-release] to automate the release of new versions. The package uses `husky` and `commitlint` to ensure commit messages adhere to the [Conventional Commits][conventionalcommits] specification. You can run `npx git-cz` from the terminal to help prepare the commit message.
 
-<!-- ## Configuration
+## Usage
+
+Usage is fairly straight forward, the shortcode operates in the same manner in which Hinode's button shortcode operates, except it has severly less availability for customization. The target of this module was simplicity and functionality.
+
+| Param    | Type               | Description                                           |
+|----------|--------------------|-------------------------------------------------------|
+| title    | string             | Title affixed to the top of the popup.                |
+| btnlabel | short string       | label of the button to accept and close out the popup |
+| content  | paragraph material | Paragraph of what the popup is supposed to say        |
+
+### Examples
+
+```markdown
+{{< popup title="Some Title" btnlabel="Some Label" >}} When we first landed on the moon, the astronauts noted there was print on the moon that said “Chuck Norris was here.”. A bulletproof vest wears Chuck Norris for protection. Mission Impossible was originally set in Chuck Norris’s house. The only time Chuck Norris was ever wrong was when he thought he had made a mistake. Chuck Norris knows Victoria’s secret. {{< /popup >}}
+```
+
+Right-o, there you go.
+
+## Configuration
 
 This module supports the following parameters (see the section `params.modules` in `config.toml`):
 
 | Setting                   | Default | Description |
-|---------------------------|---------|-------------| -->
+|---------------------------|---------|-------------|
 
 <!-- MARKDOWN LINKS -->
 [hugo]: https://gohugo.io

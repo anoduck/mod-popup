@@ -19,4 +19,4 @@
 
 [params.modules.popup]
   integration = "critical"
-  debug = true
+  debug = false

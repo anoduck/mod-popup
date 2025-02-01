@@ -19,13 +19,12 @@
 {{- $file := . -}}
 {{- $title := "" -}}
 {{- $btnlabel := "" -}}
-{{- $btnlink := "" -}}
 {{- $content := "" -}}
 {{- $context := "" -}}
 {{- $debug := "" -}}
 
 <!-- Set debug -->
-{{- if .Site.Params.modules.countup.debug }}
+{{- if .Site.Params.modules.popup.debug }}
     {{- $debug = true -}}
 {{ end }}
 
@@ -35,53 +34,28 @@
 {{- if .IsNamedParams }}
   {{- $title = .Get "title" -}}
   {{- $btnlabel = .Get "btnlabel" -}}
-  {{- $btnlink = .Get "btnlink" -}}
   {{- $content = $context | strings.TrimSpace | .Page.RenderString -}}
 {{ else }}
   {{- $title = .Get 0 -}}
   {{- $btnlabel = .Get 1 -}}
-  {{- $btnlink = .Get 2 -}}
   {{- $content = $context | strings.TrimSpace | .Page.RenderString -}}
 {{ end }}
 
-
-<div class="row pop-up">
-  <div class="box small-6 large-centered">
-    <a href="#" class="close-button">&#10006;</a>
-    {{ with $title }}
-    <h3>{{ . | safeHTML }}</h3>
-    {{ end }}
-    {{ with $content }}
-      {{ . }}
-    {{ end }}
-    <a href="{{ $btnlink | safeHTML }}" class="button">{{ $btnlabel | safeHTML }}</a>
-  </div>
-</div>
-
-
-<!-- popup -->
-<div class="popScroll">
-	<div class="popup">
-		<span class="ribbon top-left ribbon-primary">
-			<small>Hello!</small>
-		</span>
-    {{ with $title }}
+<div class="bts-popup" role="alert">
+    <div class="bts-popup-container">
+      {{ with $title }}
       <h1>{{ . | safeHTML }}</h1>
-    {{ end }}
-		<h1>Join Funda Clear Now</h1>
-		<div class='video-wrapper'>
-			<div class='video'>
-				<img src="https://loremflickr.com/290/200/cat/all" alt="" width="290" height="200" />
-			</div>
-		</div>
-		<p>Close the Pop up or You can Go Home Now.</p>
-		<div id="option">
-			<a href="#" id="home" class="boxi">Home</a>
-			<em>or</em>
-			<a href="#" id="close" class="boxi closei">Close</a>
-<!-- 			<p class="adstext">&nbsp</p> -->
-		</div>
-	</div>
+      {{ end }}
+      {{ with $content }}
+      	<p>{{ . }}</p>
+      {{ end }}
+				<div class="bts-popup-button">
+        {{ with $btnlabel }}
+		       <a href="#0">{{ . | safeHTML }}</a>
+        {{ end }}
+         </div>
+        <a href="#0" class="bts-popup-close img-replace">Close</a>
+    </div>
 </div>
 
 <!-- Provide debug information -->
@@ -97,7 +71,8 @@
     - Original Content Entry = {{ $context }}
     - Content Entry with Safe Html = {{ $context | safeHTML }}
     - Rendered content with Page.RenderString = {{ $context | strings.TrimSpace | .Page.RenderString }}
-    - Rendered content with markdownify = {{ $context | strings.TrimSpace | .Page.Markdownify }}
+    - Button Label = {{ $btnlabel }}
+    - Title = {{ $title }}
   
   </pre>
 </div>
