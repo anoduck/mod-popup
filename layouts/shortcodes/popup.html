@@ -19,40 +19,43 @@
 {{- $file := . -}}
 {{- $title := "" -}}
 {{- $btnlabel := "" -}}
-{{- $btnlink := "" -}}
 {{- $content := "" -}}
+{{- $context := "" -}}
 {{- $debug := "" -}}
 
 <!-- Set debug -->
-{{- if .Site.Params.modules.countup.debug }}
+{{- if .Site.Params.modules.popup.debug }}
     {{- $debug = true -}}
 {{ end }}
+
+{{- $context = .Inner -}}
 
 <!-- Define Variables -->
 {{- if .IsNamedParams }}
   {{- $title = .Get "title" -}}
   {{- $btnlabel = .Get "btnlabel" -}}
-  {{- $btnlink = .Get "btnlink" -}}
-  {{- $content = trim .Inner " \r\n" -}}
+  {{- $content = $context | strings.TrimSpace | .Page.RenderString -}}
 {{ else }}
   {{- $title = .Get 0 -}}
   {{- $btnlabel = .Get 1 -}}
-  {{- $btnlink = .Get 2 -}}
-  {{- $content = trim .Inner " \r\n" -}}
+  {{- $content = $context | strings.TrimSpace | .Page.RenderString -}}
 {{ end }}
 
-
-<div class="row pop-up">
-  <div class="box small-6 large-centered">
-    <a href="#" class="close-button">&#10006;</a>
-    {{ with $title }}
-    <h3>{{ . | safeHTML }}</h3>
-    {{ end }}
-    {{ with $content }}
-      {{ . | .Page.RenderString }}
-    {{ end }}
-    <a href="{{ $btnlink | safeHTML }}" class="button">{{ $btnlabel | safeHTML }}</a>
-  </div>
+<div class="bts-popup" role="alert">
+    <div class="bts-popup-container">
+      {{ with $title }}
+      <h1>{{ . | safeHTML }}</h1>
+      {{ end }}
+      {{ with $content }}
+      	<p>{{ . }}</p>
+      {{ end }}
+				<div class="bts-popup-button">
+        {{ with $btnlabel }}
+		       <a href="#0">{{ . | safeHTML }}</a>
+        {{ end }}
+         </div>
+        <a href="#0" class="bts-popup-close img-replace">Close</a>
+    </div>
 </div>
 
 <!-- Provide debug information -->
@@ -65,10 +68,11 @@
     Rendering info
     --------------
 
-    - Original Content Entry = {{ $content }}
-    - Content Entry with Safe Html = {{ $content | safeHTML }}
-    - Rendered content with Page.RenderString = {{ $content | .Page.RenderString }}
-    - Rendered content with markdownify = {{ $content | .Page.Markdownify }}
+    - Original Content Entry = {{ $context }}
+    - Content Entry with Safe Html = {{ $context | safeHTML }}
+    - Rendered content with Page.RenderString = {{ $context | strings.TrimSpace | .Page.RenderString }}
+    - Button Label = {{ $btnlabel }}
+    - Title = {{ $title }}
   
   </pre>
 </div>

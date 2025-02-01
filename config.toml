@@ -10,12 +10,13 @@
     source = 'assets'
     target = 'assets'
   [[module.mounts]]
+    source = 'dist/js'
+    target = 'assets/js/modules/popup'
+    include = '*.js'
+  [[module.mounts]]
     source = 'static'
     target = 'static'
-  [[module.mounts]]
-    source = 'data'
-    target = 'data'
 
-[params.modules.underconstruction]
+[params.modules.popup]
   integration = "critical"
-  debug = true
+  debug = false
