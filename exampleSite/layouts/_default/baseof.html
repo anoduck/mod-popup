@@ -4,13 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
   <title>{{ with .Title }}{{ printf "%s | " . }}{{ end }}{{ site.Title }}</title>
-  {{- partial "head/stylesheet.html" -}}
 </head>
 <body>
 {{ block "main" . }}
 
 {{ end }}
-<script src="/js/jquery.js"></script>
-<script src="/js/autoload.js"></script>
+{{- partial "_default/popup.html" -}}
 </body>
 </html>
