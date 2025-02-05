@@ -1,12 +1,3 @@
-[module]
-  [module.hugoVersion]
-    extended = true
-    min = "0.110.0"
-    max = ""
-  [[module.mounts]]
-    source = 'layouts'
-    target = 'layouts'
-
 [params.module.popup]
   integration = "critical"
   debug = true
