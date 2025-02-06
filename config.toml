@@ -6,12 +6,15 @@
   [[module.mounts]]
     source = 'layouts'
     target = 'layouts'
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
 
-[params.module.popup]
-  integration = "critical"
-  debug = true
-  title = 'Some popup Title'
-  image = 'https://res.cloudinary.com/solardump/image/upload/v1738747178/under_construction_PNG46_rajllh.png'
-  alt = 'This is some alt text crap.'
-  btnlabel = 'Label for button'
-  content = 'Tis is a reminder that this parameter needs to be tested out more thoroughly to see if it can handle large amounts of test with very long lines, such as the one you are reading at this very moment.'
+  [params.modules.popup]
+    integration = "critical"
+    debug = true
+    title = 'Popup Title from Params'
+    image = 'https://res.cloudinary.com/solardump/image/upload/v1738747178/under_construction_PNG46_rajllh.png'
+    alt = 'This is some alt text crap.'
+    btnlabel = 'Label for button'
+    content = 'Tis is a reminder that this parameter needs to be tested out more thoroughly to see if it can handle large amounts of test with very long lines, such as the one you are reading at this very moment.'

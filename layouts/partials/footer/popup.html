@@ -1,0 +1,71 @@
+<!--
+    divcensed under MIT license 2025, Anoduck, The Anonymous Duck
+    https://anoduck.mit-license.org
+
+    Hinode is a creation of The Hinode Team / I.E. Mark Dumay -> Of, which all credit and property rights are due.
+
+    mod-popup is created by Anoduck, The Anonymous Duck
+    Copyright � 2025 Anoduck, The Anonymous Duck; https://anoduck.mit-license.org
+-->
+<!--
+    Copyright � 2024 The Hinode Team / Mark Dumay. All rights reserved.
+    Use of this source code is governed by The MIT license (MIT) that can be found in the LICENSE file.
+    Visit gethinode.com/license for more details.
+-->
+
+<!-- Check for Valid Arguements -->
+{{- $error := false -}}
+
+<!-- Initialize arguments -->
+{{- $title := "" -}}
+{{- $btnlabel := "" -}}
+{{- $image := "" -}}
+{{- $alt := "" -}}
+{{- $content := "" -}}
+{{- $debug := "" -}}
+
+{{- $title = .Site.Params.modules.popup.title | default "Some Hinode Site" -}}
+{{- $image = .Site.Params.modules.popup.image | default "https://picsum.photos/200" -}}
+{{- $alt = .Site.Params.modules.popup.alt | default "Placeholder Image Ahoy!" -}}
+{{- $btnlabel = .Site.Params.modules.popup.btnlabel | default "Close" -}}
+{{- $content = .Site.Params.modules.popup.content | default "This is an example of the popup module for Hinode. It is intended to allow users to display a simple popover when entering the site, similarly to the module cookie consent." -}}
+{{- $debug = .Site.Params.modules.popup.debug | default false -}}
+
+<div class="bts-popup" role="alert">
+    <div class="bts-popup-container">
+		{{ with $title }}
+		<h1>{{ . | safeHTML }}</h1>
+		{{ end }}
+		<img class="img-replace" {{ printf "src=%q" $image | safeHTMLAttr }} {{ printf "alt=%q" $alt | safeHTMLAttr }}/>
+		{{ with $content }}
+		<p class="popup-content">{{ $content | safeHTML }}</p>
+		{{ end }}
+		<div class="bts-popup-button">
+			{{ with $btnlabel }}
+			<a href="#0">{{ $btnlabel | safeHTML }}</a>
+			{{ end }}
+        </div>
+		<a href="#0" class="bts-popup-close imag-replace"></a>
+    </div>
+</div>
+
+<!-- Provide debug information -->
+{{- if $debug }}
+<br/>
+<div>
+	<pre>
+	Debugging Info:
+	===============
+
+		Rendering info
+		--------------
+
+		- Popup title = {{ $title | safeHTML }}
+		- Image url for popup image = {{ $image | safeHTML }}
+		- Image Alternative text = {{ $alt | safeHTML }}
+		- Label for popup button = {{ $btnlabel | safeHTML }}
+		- Content to render to popup body = {{ $content | safeHTML }}
+
+	</pre>
+</div>
+{{ end }}
