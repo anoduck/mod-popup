@@ -32,7 +32,7 @@
     width: 90%;
     max-width: 400px;
     margin: 4em auto;
-    background: #a0cff1;
+    background: #f55a00;
     border-radius: none; 
     text-align: center;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
@@ -53,14 +53,17 @@
 .bts-popup-container img {
     padding: 10px 0 0 0;
     width: 200px;
+    filter: drop-shadow(3px 3px 3px white) drop-shadow(-3px -3px 3px white) drop-shadow(3px -3px 3px white) drop-shadow(-3px 3px 3px white);
 }
 .bts-popup-container h1 {
     color: whitesmoke;
     padding: 32px 0 0 0;
+    text-shadow: 2px 2px 3px gray;
 }
 .bts-popup-container p {
     color: white;
     padding: 2px 40px;
+    text-shadow: 2px 2px 3px gray;
 }
 .bts-popup-container .bts-popup-button {
     padding: 5px 25px;
@@ -73,6 +76,7 @@
     color: white;
     text-decoration: none;
     text-transform: uppercase;
+    text-shadow: 2px 2px 3px gray;
 }
 
 .bts-popup-container .bts-popup-close {

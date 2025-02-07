@@ -7,5 +7,4 @@ modules: popup
 
 TODO: placeholder
 
-This modules does not use a shortcode, so here is a chuck norris joke instead: When Chuck Norris was born he drove his mom home from the hospital.
-
+{{< popup >}}

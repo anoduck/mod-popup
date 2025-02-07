@@ -5,9 +5,6 @@ title = 'Test site for mod-popup'
 [markup.goldmark.renderer]
 unsafe = true
 
-[markup.goldmark.parser.attribute]
-block = true
-
 [module]
   # Build and serve using local mod-popup clone declared in the named Hugo workspace:
   workspace = "mod-popup.work"

@@ -17,6 +17,7 @@
 {{- $error := false -}}
 
 <!-- Initialize arguments -->
+{{- $file := . -}}
 {{- $title := "" -}}
 {{- $btnlabel := "" -}}
 {{- $image := "" -}}
@@ -24,12 +25,20 @@
 {{- $content := "" -}}
 {{- $debug := "" -}}
 
-{{- $title = .Site.Params.modules.popup.title | default "Some Hinode Site" -}}
-{{- $image = .Site.Params.modules.popup.image | default "https://picsum.photos/200" -}}
-{{- $alt = .Site.Params.modules.popup.alt | default "Placeholder Image Ahoy!" -}}
-{{- $btnlabel = .Site.Params.modules.popup.btnlabel | default "Close" -}}
-{{- $content = .Site.Params.modules.popup.content | default "This is an example of the popup module for Hinode. It is intended to allow users to display a simple popover when entering the site, similarly to the module cookie consent." -}}
-{{- $debug = .Site.Params.modules.popup.debug | default false -}}
+{{- if .Site.Params.Modules.Popup }}
+	{{- $title = .Site.Params.Modules.Popup.title | default "Some Hinode Site" -}}
+	{{- $image = .Site.Params.Modules.Popup.image | default "https://picsum.photos/200" -}}
+	{{- $alt = .Site.Params.Modules.Popup.alt | default "Placeholder Image Ahoy!" -}}
+	{{- $btnlabel = .Site.Params.Modules.Popup.btnlabel | default "Close" -}}
+	{{- $content = .Site.Params.Modules.Popup.content | default "This is a content test string." -}}
+{{ else }}
+	{{ errorf "Configuration for module did not render" }}
+	{{ errorf "Did we forget to place a '.' after calling the partial again?" }}
+{{ end }}
+
+{{- if .Site.Params.Modules.Popup.debug }}
+	{{- $debug = true -}}
+{{ end }}
 
 <div class="bts-popup" role="alert">
     <div class="bts-popup-container">
