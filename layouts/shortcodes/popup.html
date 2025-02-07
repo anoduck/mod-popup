@@ -4,7 +4,8 @@
 
     Hinode is a creation of The Hinode Team / I.E. Mark Dumay -> Of, which all credit and property rights are due.
 
-    TimelineJS is created by The Knight Labs at The NorthWestern University School of Engineering, for which, all credit and property rights are due.
+    mod-popup is created by Anoduck, The Anonymous Duck
+    Copyright � 2025 Anoduck, The Anonymous Duck; https://anoduck.mit-license.org
 -->
 <!--
     Copyright � 2024 The Hinode Team / Mark Dumay. All rights reserved.
@@ -12,68 +13,68 @@
     Visit gethinode.com/license for more details.
 -->
 
-<!-- Check for valid arguments -->
+<!-- Check for Valid Arguements -->
 {{- $error := false -}}
 
 <!-- Initialize arguments -->
 {{- $file := . -}}
 {{- $title := "" -}}
 {{- $btnlabel := "" -}}
+{{- $image := "" -}}
+{{- $alt := "" -}}
 {{- $content := "" -}}
-{{- $context := "" -}}
 {{- $debug := "" -}}
 
-<!-- Set debug -->
-{{- if .Site.Params.modules.popup.debug }}
-    {{- $debug = true -}}
+{{- if .Site.Params.Modules.Popup }}
+	{{- $title = .Site.Params.Modules.Popup.title | default "Some Hinode Site" -}}
+	{{- $image = .Site.Params.Modules.Popup.image | default "https://picsum.photos/200" -}}
+	{{- $alt = .Site.Params.Modules.Popup.alt | default "Placeholder Image Ahoy!" -}}
+	{{- $btnlabel = .Site.Params.Modules.Popup.btnlabel | default "Close" -}}
+	{{- $content = .Site.Params.Modules.Popup.content | default "This is a content test string." -}}
+{{ else }}
+	{{ errorf "Configuration for module did not render" }}
+	{{ errorf "Did we forget to place a '.' after calling the partial again?" }}
 {{ end }}
 
-{{- $context = .Inner -}}
-
-<!-- Define Variables -->
-{{- if .IsNamedParams }}
-  {{- $title = .Get "title" -}}
-  {{- $btnlabel = .Get "btnlabel" -}}
-  {{- $content = $context | strings.TrimSpace | .Page.RenderString -}}
-{{ else }}
-  {{- $title = .Get 0 -}}
-  {{- $btnlabel = .Get 1 -}}
-  {{- $content = $context | strings.TrimSpace | .Page.RenderString -}}
+{{- if .Site.Params.Modules.Popup.debug }}
+	{{- $debug = true -}}
 {{ end }}
 
 <div class="bts-popup" role="alert">
     <div class="bts-popup-container">
-      {{ with $title }}
-      <h1>{{ . | safeHTML }}</h1>
-      {{ end }}
-      {{ with $content }}
-      	<p>{{ . }}</p>
-      {{ end }}
-				<div class="bts-popup-button">
-        {{ with $btnlabel }}
-		       <a href="#0">{{ . | safeHTML }}</a>
-        {{ end }}
-         </div>
-        <a href="#0" class="bts-popup-close img-replace">Close</a>
+		{{ with $title }}
+		<h1>{{ . | safeHTML }}</h1>
+		{{ end }}
+		<img class="img-replace" {{ printf "src=%q" $image | safeHTMLAttr }} {{ printf "alt=%q" $alt | safeHTMLAttr }}/>
+		{{ with $content }}
+		<p class="popup-content">{{ $content | safeHTML }}</p>
+		{{ end }}
+		<div class="bts-popup-button">
+			{{ with $btnlabel }}
+			<a href="#0">{{ $btnlabel | safeHTML }}</a>
+			{{ end }}
+        </div>
+		<a href="#0" class="bts-popup-close imag-replace"></a>
     </div>
 </div>
 
 <!-- Provide debug information -->
 {{- if $debug }}
+<br/>
 <div>
-  <pre>
-  Debugging Info:
-  ===============
+	<pre>
+	Debugging Info:
+	===============
 
-    Rendering info
-    --------------
+		Rendering info
+		--------------
 
-    - Original Content Entry = {{ $context }}
-    - Content Entry with Safe Html = {{ $context | safeHTML }}
-    - Rendered content with Page.RenderString = {{ $context | strings.TrimSpace | .Page.RenderString }}
-    - Button Label = {{ $btnlabel }}
-    - Title = {{ $title }}
-  
-  </pre>
+		- Popup title = {{ $title | safeHTML }}
+		- Image url for popup image = {{ $image | safeHTML }}
+		- Image Alternative text = {{ $alt | safeHTML }}
+		- Label for popup button = {{ $btnlabel | safeHTML }}
+		- Content to render to popup body = {{ $content | safeHTML }}
+
+	</pre>
 </div>
 {{ end }}
