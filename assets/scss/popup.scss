@@ -28,19 +28,28 @@
 }
 
 .bts-popup-container {
-    position: relative;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 90%;
     max-width: 400px;
     margin: 4em auto;
-    background: #f55a00;
-    border-radius: none; 
+    background: #B44C5C;
+    border-radius: 2rem; 
+    border-width: 0.256rem;
+    border-color: black;
+    border-style: solid;
     text-align: center;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.2);
     -webkit-transform: translateY(-40px);
     -moz-transform: translateY(-40px);
     -ms-transform: translateY(-40px);
     -o-transform: translateY(-40px);
     transform: translateY(-40px);
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
     /* Force Hardware Acceleration in WebKit */
     -webkit-backface-visibility: hidden;
     -webkit-transition-property: -webkit-transform;
@@ -58,25 +67,28 @@
 .bts-popup-container h1 {
     color: whitesmoke;
     padding: 32px 0 0 0;
-    text-shadow: 2px 2px 3px gray;
+    text-shadow: 0.125rem -0.125rem 0.125rem black;
 }
 .bts-popup-container p {
     color: white;
-    padding: 2px 40px;
-    text-shadow: 2px 2px 3px gray;
+    padding: 0.125rem 40px;
+    margin-top: 1rem;
+    text-shadow: 0.125rem 0.125rem 3px black;
 }
 .bts-popup-container .bts-popup-button {
     padding: 5px 25px;
-    border: 2px solid white;
+    border: 0.125rem solid white;
     display: inline-block;
+    margin-top: 0.5rem;
     margin-bottom: 10px;
+    box-shadow: 0.125rem 0.125rem 3px black;
 }
 
 .bts-popup-container a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    text-shadow: 2px 2px 3px gray;
+    text-shadow: 0.125rem 0.125rem 3px black;
 }
 
 .bts-popup-container .bts-popup-close {
