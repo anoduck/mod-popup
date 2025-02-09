@@ -7,7 +7,7 @@
     white-space: nowrap;
 }
 .bts-popup {
-    position: fixed;
+    position: relative;
     left: 0;
     top: 0;
     height: 100%;
@@ -37,7 +37,7 @@
     max-width: 400px;
     margin: 4em auto;
     background: #B44C5C;
-    border-radius: 2rem; 
+    border-radius: 3rem; 
     border-width: 0.256rem;
     border-color: black;
     border-style: solid;
@@ -67,13 +67,13 @@
 .bts-popup-container h1 {
     color: whitesmoke;
     padding: 32px 0 0 0;
-    text-shadow: 0.125rem -0.125rem 0.125rem black;
+    text-shadow: -0.125rem 0.125rem 0.125rem black;
 }
 .bts-popup-container p {
     color: white;
     padding: 0.125rem 40px;
     margin-top: 1rem;
-    text-shadow: 0.125rem 0.125rem 3px black;
+    text-shadow: -0.125rem 0.125rem 3px black;
 }
 .bts-popup-container .bts-popup-button {
     padding: 5px 25px;
@@ -81,14 +81,14 @@
     display: inline-block;
     margin-top: 0.5rem;
     margin-bottom: 10px;
-    box-shadow: 0.125rem 0.125rem 3px black;
+    box-shadow: -0.125rem 0.125rem 3px black;
 }
 
 .bts-popup-container a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    text-shadow: 0.125rem 0.125rem 3px black;
+    text-shadow: -0.125rem 0.125rem 3px black;
 }
 
 .bts-popup-container .bts-popup-close {

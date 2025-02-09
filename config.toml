@@ -11,7 +11,7 @@
     target = 'assets'
 
 [params.modules.popup]
-  integration = "critical"
+  integration = "optional"
   debug = false
   title = 'Popup Title from Params'
   image = 'https://res.cloudinary.com/solardump/image/upload/v1738747178/under_construction_PNG46_rajllh.png'
