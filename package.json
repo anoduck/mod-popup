@@ -1,6 +1,6 @@
 {
   "name": "@anoduck/mod-popup",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A Hugo module compatible with Hinode for adding a popup to the front page.",
   "keywords": [
     "hugo",
