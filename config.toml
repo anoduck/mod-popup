@@ -9,6 +9,15 @@
   [[module.mounts]]
     source = 'assets'
     target = 'assets'
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+  [[module.mounts]]
+    source = 'dist/js'
+    target = 'assets/js/modules/popup'
+  [[modules.mounts]]
+    source = 'dist/scss'
+    target = 'assets/scss'
 
 [params.modules.popup]
   integration = "optional"

@@ -12,3 +12,15 @@ unsafe = true
 
   [[module.imports]]
     path = "github.com/anoduck/mod-popup"
+  [[module.imports.mounts]]
+    source = 'static'
+    target = 'static'
+  [[module.imports.mounts]]
+    source = 'dist/js/popup.js'
+    target = 'static/js/popup.js'
+  [[module.imports.mounts]]
+    source = 'dist/scss/popup.scss'
+    target = 'static/popup.css'
+  [[module.imports.mounts]]
+    source = 'layouts'
+    target = 'layouts'
