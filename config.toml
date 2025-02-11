@@ -1,8 +1,12 @@
+[markup.goldmark.renderer]
+  unsafe = true
+
 [module]
   [module.hugoVersion]
     extended = true
     min = "0.110.0"
     max = ""
+
   [[module.mounts]]
     source = 'layouts'
     target = 'layouts'
@@ -15,9 +19,10 @@
   [[module.mounts]]
     source = 'dist/js'
     target = 'assets/js/modules/popup'
-  [[modules.mounts]]
-    source = 'dist/scss'
-    target = 'assets/scss'
+    include = '*.js'
+  [[module.mounts]]
+    source = 'dist/css/popup.scss'
+    target = 'assets/scss/popup.scss'
 
 [params.modules.popup]
   integration = "optional"

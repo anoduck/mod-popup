@@ -2,6 +2,8 @@ github.com/anoduck/mod-popup v0.0.1 h1:/GvkblCx72yhGI71VvbnJOduWYpnZjW8JxpdhSfj2
 github.com/anoduck/mod-popup v0.0.1/go.mod h1:h2N2QA3SokbQiaSPAcCJLpuQP1hhbUqCx8HhxHa6CUs=
 github.com/anoduck/mod-popup v0.1.1 h1:pkWSwmNUae85TG+nSnXJ+kZjt7+TAC+Jx10V0FXX8Vs=
 github.com/anoduck/mod-popup v0.1.1/go.mod h1:h2N2QA3SokbQiaSPAcCJLpuQP1hhbUqCx8HhxHa6CUs=
+github.com/anoduck/mod-popup v0.1.7 h1:gjwnWIUKkUABz5WZ3BkZx6uqBG6I06ykiqufLIisnzM=
+github.com/anoduck/mod-popup v0.1.7/go.mod h1:h2N2QA3SokbQiaSPAcCJLpuQP1hhbUqCx8HhxHa6CUs=
 github.com/gethinode/mod-template v0.0.0-20240304031439-297f26e96855 h1:79n9BJStYGBmvg2wXq0CdpDH1+jYlvLa68iaiAsHw0M=
 github.com/gethinode/mod-template v0.0.0-20240304031439-297f26e96855/go.mod h1:6ofWqxiQMhTnI8U6mT3FrEUN1UZ0vcUcZyXVIny2CZs=
 github.com/gethinode/mod-template v0.0.0-20240304050912-e05887822540 h1:wdzsVwBiQyKkUNxDE06cn66CMzL04I86XP0cMNKM4+4=
