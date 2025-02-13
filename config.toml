@@ -13,20 +13,14 @@
   [[module.mounts]]
     source = 'assets'
     target = 'assets'
-  [[module.mounts]]
-    source = 'static'
-    target = 'static'
-  [[module.mounts]]
-    source = 'dist/js'
-    target = 'assets/js/modules/popup'
-    include = '*.js'
-  [[module.mounts]]
-    source = 'dist/css/popup.scss'
-    target = 'assets/scss/popup.scss'
+
+[params.favicon]
+  logo = '<img src="https://favicon.im/gethinode.com" alt="gethinode.com favicon" />'
 
 [params.modules.popup]
-  integration = "optional"
-  debug = false
+  integration = "critical"
+  category = "functional"
+  debug = true
   title = 'Popup Title from Params'
   image = 'https://res.cloudinary.com/solardump/image/upload/v1738747178/under_construction_PNG46_rajllh.png'
   alt = 'This is some alt text crap.'

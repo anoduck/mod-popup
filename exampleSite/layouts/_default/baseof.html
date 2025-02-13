@@ -4,12 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
   <title>{{ with .Title }}{{ printf "%s | " . }}{{ end }}{{ site.Title }}</title>
-  <link href="/popup.css" rel="stylesheet">
+  {{/* <link href="/popup.css" rel="stylesheet"> */}}
+  {{- partial "head/stylesheet.html" -}}
 </head>
 <body>
 {{ block "main" . }}
 
 {{ end }}
-<script src="/js/popup.js"></script>
+{{ partial "footer/popup.html" . }}
+{{/* <script src="/js/popup.js"></script> */}}
+{{- partial "footer/scripts.html" -}}
 </body>
 </html>

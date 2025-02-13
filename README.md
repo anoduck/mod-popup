@@ -44,24 +44,26 @@ The target of this module was simplicity and functionality, but development of i
 
 ## Usage
 
-Usage is fairly straight forward, the shortcode implements the popup for the page it is used in, this shortcode takes no arguments. The arguments for the shortcode are provided inside the site parameter configuration file `params.toml`. You will need to add this module to the `_index.md` file of your site, this ensures the popup will only appear on your front page, and not on everypage as it was originally planned.
+Usage is fairly straight forward, You will need to add a reference for the partial to a local copy of the
+`/layouts/_default/baseof.html` file. A local copy can be downloaded from
+[Here](https://github.com/gethinode/hinode/blob/main/exampleSite/layouts/_default/baseof.html). There reference will
+need to be added at the bottom of the body right before any reference to javascript sources are mentioned. The remaining
+arguments for the module will need to be set inside the site parameter configuration file `params.toml`.
 
-First you will need to add the configuration parameters to your `params.toml` file:
+Below is an example of the syntax that will need to be included in the `baseof.html` file. Do not forget the period
+after the partial reference, it is important.
 
-```toml
-[params.modules.popup]
-debug = false
-title = "Example Title"
-image = "https://some.url/to/your/image"
-alt = "Alternative text for image."
-bnlabel = "This is a button label."
-content = "This is a long line or several lines of content to place inside the body of your popup."
-```
-
-Then you will need to include the popup shortcode in the pages you desire the popup to show up on.
-
-```markdown
-{{< popup >}}
+```html
+{{ if .Site.Params.main.footerBelowFold }}
+    {{- partial "footer/social.html" . -}}
+    {{- partial "footer/footer.html" . -}}
+{{ end }}
+<!-- Please popup reference Here -->
+{{- partial "footer/popup.html" . -}}
+{{- partial "footer/toast-container.html" . -}}
+{{- partial "assets/symbols.html" . -}}
+{{- partialCached "footer/scripts.html" (dict "page" .) -}}
+{{- partial "footer/scripts.html" (dict "page" . "type" "optional") -}}
 ```
 
 ## Configuration
@@ -76,6 +78,12 @@ This module supports the following parameters (see the section `params.modules` 
 | alt      | alternative text   | Alternative for the image.                            |
 | btnlabel | short string       | label of the button to accept and close out the popup |
 | content  | paragraph material | Paragraph of what the popup is supposed to say        |
+
+## Caveats
+
+You might notice additional empty space has been added to the bottom of your homepage where the content for this module
+has been rendered. This is not a result of the popup itself, but rather of the cookie banner that is displayed on
+browsers which have cookies disabled. We are working on mitigating the unintended result.
 
 <!-- MARKDOWN LINKS -->
 [hugo]: https://gohugo.io

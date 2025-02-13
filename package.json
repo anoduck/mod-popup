@@ -1,6 +1,6 @@
 {
   "name": "@anoduck/mod-popup",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "A Hugo module compatible with Hinode for adding a popup to the front page.",
   "keywords": [
     "hugo",
@@ -21,9 +21,7 @@
     "mod:update": "rimraf _vendor && hugo mod get -u ./... && hugo mod get -u && npm run -s mod:vendor && npm run -s mod:tidy",
     "mod:tidy": "hugo mod tidy",
     "mod:vendor": "rimraf _vendor && hugo mod vendor",
-    "postinstall": "npm run -s copy:js && npm run -s copy:scss",
-    "copy:js": "cpy contrib/js/popup.js dist/js --flat",
-    "copy:scss": "cpy contrib/scss/popup.scss dist/scss --flat",
+    "postinstall": "echo Nothing to do during postinstall.",
     "test": "npm run -s build",
     "upgrade": "npx npm-check-updates -u && npm run -s mod:update",
     "prepare": "node .husky/install.mjs"
