@@ -45,7 +45,8 @@ The target of this module was simplicity and functionality, but development of i
 ## Usage
 
 Usage is fairly straight forward, You will need to add a reference for the partial to a local copy of the
-`/layouts/_default/baseof.html` file. A local copy can be downloaded from
+`/layouts/_default/baseof.html` file. This is a 'necessary evil', as regardless of it being common practice, it does
+mean the site owner will have to pay attention to when and if this page changes up stream. A local copy can be downloaded from
 [Here](https://github.com/gethinode/hinode/blob/main/exampleSite/layouts/_default/baseof.html). There reference will
 need to be added at the bottom of the body right before any reference to javascript sources are mentioned. The remaining
 arguments for the module will need to be set inside the site parameter configuration file `params.toml`.

@@ -8,9 +8,11 @@
   {{- partial "head/stylesheet.html" -}}
 </head>
 <body>
+<div>
 {{ block "main" . }}
 
 {{ end }}
+</div>
 {{ partial "footer/popup.html" . }}
 {{/* <script src="/js/popup.js"></script> */}}
 {{- partial "footer/scripts.html" -}}
