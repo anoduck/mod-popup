@@ -1,4 +1,4 @@
-.img-replace {
+.bts-imgreplace {
     /* replace text with an image */
     display: inline-block;
     overflow: hidden;
@@ -136,21 +136,40 @@
     }
 }
 
-#cookie-banner {
-    /*display: none;*/
+// Cookie warning banner.
+.cookie-banner {
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  } 
+
+  .cookie-banner.is-visible {
     background: #333333;
     color: #fff;
     font-size: 1em;
     font-family: tahoma, arial, sans-serif;
     line-height: 1.375;
-  } 
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
     
-  #cookie-banner .content {
+  .cookie-banner.cb-content {
     position: relative;
     padding: 10px 20px;
     overflow: hidden;
     
-    .container {
+    .cb-container {
       display: inline-block;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -158,7 +177,7 @@
     }
   }
   
-  #cookie-banner .text-container {
+  .cookie-banner.cb-text {
     float: left;
     width: 60%;
     
@@ -176,10 +195,10 @@
     }
   }
   
-  #cookie-banner .button-container {
+  .cookie-banner.cb-button {
     float: right;
     
-    .close {
+    .cb-close {
       padding: 0;
       background: none;
       border: none;

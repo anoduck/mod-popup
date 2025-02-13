@@ -31,13 +31,10 @@
 	{{- $alt = .Site.Params.Modules.Popup.alt | default "Placeholder Image Ahoy!" -}}
 	{{- $btnlabel = .Site.Params.Modules.Popup.btnlabel | default "Close" -}}
 	{{- $content = .Site.Params.Modules.Popup.content | default "This is a content test string." -}}
+	{{- $debug = .Site.Params.Modules.Popup.debug | default false -}}
 {{ else }}
 	{{ errorf "Configuration for module did not render" }}
 	{{ errorf "Did we forget to place a '.' after calling the partial again?" }}
-{{ end }}
-
-{{- if .Site.Params.Modules.Popup.debug }}
-	{{- $debug = true -}}
 {{ end }}
 
 <div class="bts-popup" role="alert">
@@ -45,9 +42,9 @@
 		{{ with $title }}
 		<h1>{{ . | safeHTML }}</h1>
 		{{ end }}
-		<img class="img-replace" {{ printf "src=%q" $image | safeHTMLAttr }} {{ printf "alt=%q" $alt | safeHTMLAttr }}/>
+		<img class="bts-imgreplace" {{ printf "src=%q" $image | safeHTMLAttr }} {{ printf "alt=%q" $alt | safeHTMLAttr }}/>
 		{{ with $content }}
-		<p class="popup-content">{{ $content | safeHTML }}</p>
+		<p class="bts-content">{{ $content | safeHTML }}</p>
 		{{ end }}
 		<div class="bts-popup-button">
 			{{ with $btnlabel }}
@@ -58,10 +55,23 @@
     </div>
 </div>
 
+<div id="cookie-banner" class="cookie-banner" role="alert">
+	<div class="cb-content">
+		<div class="cb-container cb-text">
+			<p>It appears you have cookies disabled.<br/>
+			In order to provide you with the best possible experience on our site, please ensure they are enabled.
+			</p>
+		</div>
+		<div class="cb-container cb-button">
+			<button type="button" role="button" class="cb-close">Dismiss</button>
+		</div>
+	</div>
+</div>
+
 <!-- Provide debug information -->
 {{- if $debug }}
 <br/>
-<div>
+<div id="debug" data-debug="true">
 	<pre>
 	Debugging Info:
 	===============
