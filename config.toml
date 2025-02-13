@@ -20,7 +20,7 @@
 [params.modules.popup]
   integration = "critical"
   category = "functional"
-  debug = true
+  debug = false
   title = 'Popup Title from Params'
   image = 'https://res.cloudinary.com/solardump/image/upload/v1738747178/under_construction_PNG46_rajllh.png'
   alt = 'This is some alt text crap.'
