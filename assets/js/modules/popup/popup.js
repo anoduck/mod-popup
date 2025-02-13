@@ -123,11 +123,12 @@ document.addEventListener('readystatechange', (event) => {
 		if (cookieEnabled) {
 			logDebug('working on popups')
 			var docCookie = getCookie(cname);
-			if (docCookie == false) {
+			if (docCookie === false) {
 				logDebug('cookie exists')
+				logDebug('Cookie Contents: ' + docCookie)
 				hideCkMsg(divCookie);
 				hidePopup(divPopup, docCookie);
-			} else if (docCookie == true) {
+			} else if (docCookie === true) {
 				logDebug('Cookie does not exist')
 				showPopup(cname, divPopup);
 
