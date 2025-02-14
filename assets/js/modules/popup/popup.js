@@ -7,10 +7,8 @@ document.addEventListener('readystatechange', (event) => {
 		const divCookie = document.querySelector('div.cookie-banner#cookie-banner')
 
 		const modDebug = document.querySelector('div#debug')
-		const enableDebug = modDebug.dataset.debug;
-
 		function logDebug(msg) {
-			if (enableDebug) {
+			if (modDebug) {
 				console.log(msg)
 			}
 		}
@@ -18,16 +16,18 @@ document.addEventListener('readystatechange', (event) => {
 		logDebug('Ready State Loaded');
 		logDebug('ReadyState is interactive.')
 
-		function blurPage() {
-			logDebug('Blur on')
-			document.body.classList.add('cover', 'blur-in');
-			document.body.id = 'overlay'
+		const exceptPopup = document.querySelectorAll('body > *:not(#popup)');
+		function addBlur(exceptPopup) {
+			Array.from(exceptPopup).forEach(
+				(el) => el.classList.add('blur-in')
+			);
 		}
 
-		function clearPage() {
-			logDebug('Blur off')
-			document.body.classList.remove('blur-in');
-			document.body.classList.add('blur-out');
+		function removeBlur(exceptPopup) {
+			Array.from(exceptPopup).forEach(
+				(el) => el.classList.remove('blur-in'),
+				(el) => el.classList.add('blur-out')
+			);
 		}
 
 		function fadeInPopup(divPopup) {
@@ -52,17 +52,26 @@ document.addEventListener('readystatechange', (event) => {
 				while (cookie_item.charAt(0) == ' ') {
 					cookie_item = cookie_item.substring(1);
 				}
-				logDebug('Got Cookie')
+				logDebug('Got Cookie value: ' + cookie_item)
 				if (cookie_item.indexOf(name) == 0) {
-					return cookie_item.substring(name.length, cookie_item.length);
+					var cookie_value = cookie_item.substring(name.length, cookie_item.length);
+					logDebug('Value of cookie is: ' + cookie_value)
+					if (cookie_value == "") {
+						logDebug('Recieved empty value for cookie.')
+						return true;
+					} else {
+						return cookie_value
+					}
 				}
 			}
-			return "";
+			// return "";
+			logDebug('Cookie Value returned blank string')
+			return true
 		}
 
 		function hidePopup(divPopup, docCookie) {
 			logDebug('Hide Popup')
-			clearPage();
+			removeBlur(exceptPopup);
 			divPopup.classList.remove('is-visible');
 			if (docCookie === true) {
 				setCookie(cname, false, 30)
@@ -71,16 +80,15 @@ document.addEventListener('readystatechange', (event) => {
 
 		function dismissPopup(divPopup) {
 			logDebug('Dismiss Popup')
-			clearPage();
+			removeBlur(exceptPopup);
 			divPopup.classList.remove('is-visible');
 		}
 
 		function showPopup(cname, divPopup) {
 			//Set Cookie to false
 			logDebug('Show Popup.')
-			blurPage();
+			addBlur(exceptPopup);
 			fadeInPopup(divPopup);
-			setCookie(cname, true, 30);
 			setTimeout(() => {divPopup.classList.add('is-visible'); }, 1000);
 		}
 
@@ -123,13 +131,13 @@ document.addEventListener('readystatechange', (event) => {
 		if (cookieEnabled) {
 			logDebug('working on popups')
 			var docCookie = getCookie(cname);
+			logDebug('Cookie Contents: ' + docCookie)
 			if (docCookie === false) {
-				logDebug('cookie exists')
-				logDebug('Cookie Contents: ' + docCookie)
+				logDebug('cookie is false | hide popup')
 				hideCkMsg(divCookie);
 				hidePopup(divPopup, docCookie);
 			} else if (docCookie === true) {
-				logDebug('Cookie does not exist')
+				logDebug('Cookie is true | show popup')
 				showPopup(cname, divPopup);
 
 				//Close on button click
@@ -150,7 +158,7 @@ document.addEventListener('readystatechange', (event) => {
 
 				// Handle Escape Key
 				window.addEventListener('keyup', (event) => {
-					logDebug('Escape Key')
+					logDebug('Escape Key pressed on popup')
 					if (event.defaultPrevented) {
 						return;
 					}
