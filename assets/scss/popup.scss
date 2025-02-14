@@ -199,7 +199,7 @@
     left: 0;
     right: 0;
     width: 90%;
-    max-width: 400px;
+    max-width: 24rem;
     margin: 4em auto;
     background: #B44C5C;
     border-radius: 3rem; 
@@ -213,7 +213,7 @@
     -ms-transform: translateY(-40px);
     -o-transform: translateY(-40px);
     transform: translateY(-40px);
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 5555; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
     /* Force Hardware Acceleration in WebKit */
     -webkit-backface-visibility: hidden;
@@ -225,23 +225,23 @@
     transition-duration: 0.3s;
 }
 .bts-popup-block img {
-    padding: 10px 0 0 0;
-    width: 200px;
+    // padding: 4rem 0 0 0;
+    width: 12rem;
     filter: drop-shadow(3px 3px 3px white) drop-shadow(-3px -3px 3px white) drop-shadow(3px -3px 3px white) drop-shadow(-3px 3px 3px white);
 }
 .bts-popup-block h1 {
     color: whitesmoke;
-    padding: 32px 0 0 0;
     text-shadow: -0.125rem 0.125rem 0.125rem black;
 }
 .bts-popup-block p {
     color: white;
     padding: 0.125rem 40px;
     margin-top: 1rem;
+    overflow: scroll;
     text-shadow: -0.125rem 0.125rem 3px black;
 }
 .bts-popup-block .bts-popup-button {
-    padding: 5px 25px;
+    padding: 0.5rem 1.5rem;
     border: 0.125rem solid white;
     display: inline-block;
     margin-top: 0.5rem;
