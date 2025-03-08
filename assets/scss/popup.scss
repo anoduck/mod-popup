@@ -89,6 +89,7 @@
 }
 .bts-popup-block > img {
 	width: 12rem;
+	height: 12rem;
 	filter: drop-shadow(0.1rem 0.1rem 0.1rem black)
 		drop-shadow(-0.1rem 0.1rem 0.1rem black) drop-shadow(3px 3px 3px white)
 		drop-shadow(-3px -3px 3px white) drop-shadow(3px -3px 3px white)
@@ -96,6 +97,8 @@
 }
 .bts-popup-block > p {
 	color: white;
+	margin-top: 1.3rem;
+	margin-bottom: 1rem;
 	padding: 0.125rem 40px;
 	overflow: hidden;
 	text-shadow: -0.125rem 0.125rem 3px black;
