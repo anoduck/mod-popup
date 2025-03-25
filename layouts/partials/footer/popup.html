@@ -24,6 +24,7 @@
 {{- $alt := "" -}}
 {{- $content := "" -}}
 {{- $debug := "" -}}
+{{- $disable := "" -}}
 
 {{- if .Site.Params.Modules.Popup }}
 	{{- $title = .Site.Params.Modules.Popup.title | default "Some Hinode Site" -}}
@@ -32,59 +33,62 @@
 	{{- $btnlabel = .Site.Params.Modules.Popup.btnlabel | default "Close" -}}
 	{{- $content = .Site.Params.Modules.Popup.content | default "This is a content test string." -}}
 	{{- $debug = .Site.Params.Modules.Popup.debug | default false -}}
+	{{- $disable = .Site.Params.Modules.Popup.disable | default false -}}
 {{ else }}
 	{{ errorf "Configuration for module did not render" }}
 	{{ errorf "Did we forget to place a '.' after calling the partial again?" }}
 {{ end }}
 
-<div class="bts-popup" id="popup" role="alert">
-    <div class="bts-popup-block">
-		{{ with $title }}
-		<h1>{{ . | safeHTML }}</h1>
-		{{ end }}
-		<img class="bts-imgreplace" {{ printf "src=%q" $image | safeHTMLAttr }} {{ printf "alt=%q" $alt | safeHTMLAttr }}/>
-		{{ with $content }}
-		<p class="bts-content">{{ $content | safeHTML }}</p>
-		{{ end }}
-		<div class="bts-popup-button">
-			{{ with $btnlabel }}
-			<a href="#0">{{ $btnlabel | safeHTML }}</a>
+{{- if (ne $disable true) }}
+	<div class="bts-popup" id="popup" role="alert">
+		<div class="bts-popup-block">
+			{{ with $title }}
+			<h1>{{ . | safeHTML }}</h1>
 			{{ end }}
-        </div>
-		<a href="#" class="bts-popup-close imag-replace"></a>
-    </div>
-</div>
-
-<div id="cookie-banner" class="cookie-banner" role="alert">
-	<div class="cb-content">
-		<div class="cb-container cb-text">
-			<p>It appears you have cookies disabled.<br/>
-			In order to provide you with the best possible experience on our site, please ensure they are enabled.
-			</p>
-		</div>
-		<div class="cb-container cb-button">
-			<button type="button" role="button" class="cb-close">Dismiss</button>
+			<img class="bts-imgreplace" {{ printf "src=%q" $image | safeHTMLAttr }} {{ printf "alt=%q" $alt | safeHTMLAttr }}/>
+			{{ with $content }}
+			<p class="bts-content">{{ $content | safeHTML }}</p>
+			{{ end }}
+			<div class="bts-popup-button">
+				{{ with $btnlabel }}
+				<a href="#0">{{ $btnlabel | safeHTML }}</a>
+				{{ end }}
+			</div>
+			<a href="#" class="bts-popup-close imag-replace"></a>
 		</div>
 	</div>
-</div>
 
-<!-- Provide debug information -->
-{{- if $debug }}
-<br/>
-<div id="debug">
-	<pre>
-	Debugging Info:
-	===============
+	<div id="cookie-banner" class="cookie-banner" role="alert">
+		<div class="cb-content">
+			<div class="cb-container cb-text">
+				<p>It appears you have cookies disabled.<br/>
+				In order to provide you with the best possible experience on our site, please ensure they are enabled.
+				</p>
+			</div>
+			<div class="cb-container cb-button">
+				<button type="button" role="button" class="cb-close">Dismiss</button>
+			</div>
+		</div>
+	</div>
 
-		Rendering info
-		--------------
+	<!-- Provide debug information -->
+	{{- if $debug }}
+	<br/>
+	<div id="debug">
+		<pre>
+		Debugging Info:
+		===============
 
-		- Popup title = {{ $title | safeHTML }}
-		- Image url for popup image = {{ $image | safeHTML }}
-		- Image Alternative text = {{ $alt | safeHTML }}
-		- Label for popup button = {{ $btnlabel | safeHTML }}
-		- Content to render to popup body = {{ $content | safeHTML }}
+			Rendering info
+			--------------
 
-	</pre>
-</div>
+			- Popup title = {{ $title | safeHTML }}
+			- Image url for popup image = {{ $image | safeHTML }}
+			- Image Alternative text = {{ $alt | safeHTML }}
+			- Label for popup button = {{ $btnlabel | safeHTML }}
+			- Content to render to popup body = {{ $content | safeHTML }}
+
+		</pre>
+	</div>
+	{{ end }}
 {{ end }}
