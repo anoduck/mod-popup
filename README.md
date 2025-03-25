@@ -46,7 +46,7 @@ The target of this module was simplicity and functionality, but development of i
 
 Usage is fairly straight forward, You will need to add a reference for the partial to a local copy of the
 `/layouts/_default/baseof.html` file. This is a 'necessary evil', as regardless of it being common practice, it does
-mean the site owner will have to pay attention to when and if this page changes up stream. A local copy can be downloaded from
+mean the site owner will have to pay attention to when and if this page changes upstream. A local copy can be downloaded from
 [Here](https://github.com/gethinode/hinode/blob/main/exampleSite/layouts/_default/baseof.html). There reference will
 need to be added at the bottom of the body right before any reference to javascript sources are mentioned. The remaining
 arguments for the module will need to be set inside the site parameter configuration file `params.toml`.
@@ -74,17 +74,12 @@ This module supports the following parameters (see the section `params.modules` 
 | Param    | Type               | Description                                           |
 |----------|--------------------|-------------------------------------------------------|
 | debug    | boolean            | Whether to enable debug output on page or not.        |
+| disable  | boolean            | Whether to disable the popup feature altogether.      |
 | title    | string             | Title affixed to the top of the popup.                |
 | image    | url                | Url to the image for use.                             |
 | alt      | alternative text   | Alternative for the image.                            |
 | btnlabel | short string       | label of the button to accept and close out the popup |
 | content  | paragraph material | Paragraph of what the popup is supposed to say        |
-
-## Caveats
-
-You might notice additional empty space has been added to the bottom of your homepage where the content for this module
-has been rendered. This is not a result of the popup itself, but rather of the cookie banner that is displayed on
-browsers which have cookies disabled. We are working on mitigating the unintended result.
 
 <!-- MARKDOWN LINKS -->
 [hugo]: https://gohugo.io

@@ -1,6 +1,6 @@
 {
   "name": "@anoduck/mod-popup",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "A Hugo module compatible with Hinode for adding a popup to the front page.",
   "keywords": [
     "hugo",
@@ -37,8 +37,8 @@
   },
   "homepage": "https://gethinode.com",
   "devDependencies": {
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@semantic-release/exec": "^7.0.3",
     "@semantic-release/git": "^10.0.1",
     "commitizen": "^4.3.1",
